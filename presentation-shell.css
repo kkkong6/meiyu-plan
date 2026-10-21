@@ -1,0 +1,32 @@
+/* A single bottom dock keeps presentation chrome away from the corners. */
+body .player {
+  inset: auto auto 12px 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  height: 52px;
+  padding: 0 12px;
+  gap: 15px;
+  border: 1px solid #dcd5e6;
+  border-radius: 10px;
+  background: #f5f2f9;
+  z-index: 6;
+}
+.player .progress-track { display: none; }
+body .player .page-navigation { margin-left: 0; gap: 10px; }
+#chapterNavigation { gap: 1px; }
+#chapterNavigation button { padding: 7px 9px; font-size: 11px; }
+.presentation-tools { display: flex; align-items: center; gap: 3px; flex-shrink: 0; }
+.presentation-tools button { padding: 8px 6px; font-size: 11px; line-height: 1.5; color: var(--muted); white-space: nowrap; border-radius: 4px; }
+.presentation-tools button:hover { background: #ece5f6; color: var(--purple); }
+.presentation-tools #fullscreenButton { min-width: 56px; }
+.presentation-tools kbd { display: inline-block; margin-left: 3px; padding: 0 3px; font-size: 9px; line-height: 1.5; color: var(--muted); background: #e9e3f0; border-radius: 3px; }
+:fullscreen body .player { inset: auto auto 12px 50%; width: max-content; background: #f5f2f9; opacity: 1; }
+@media (max-width: 799px), (max-height: 539px) {
+  body { padding-bottom: 112px; }
+  body .player,:fullscreen body .player { bottom: 8px; display: grid; grid-template-columns: 1fr auto; width: calc(100% - 20px); max-width: none; height: 94px; gap: 0 12px; padding: 5px 10px; }
+  #chapterNavigation { grid-column: 1 / -1; }
+  body .player .page-navigation { justify-self: center; }
+  #stage .slide { min-height: calc(100dvh - 112px); }
+}
+@media print { body .player { display: none !important; } }
